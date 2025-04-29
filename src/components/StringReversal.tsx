@@ -4,10 +4,13 @@ import { Button } from "../base/button";
 import { useState } from "react";
 import { motion } from "motion/react";
 
-const string = "HELLO";
+type Props = {
+  inputString: string;
+  hasControls?: boolean;
+};
 
-export const StringReversal = () => {
-  const initialArray = string.split("").map((char, index) => ({
+export const StringReversal = ({ inputString, hasControls }: Props) => {
+  const initialArray = inputString.split("").map((char, index) => ({
     id: `${char}-${index}`,
     char,
   }));
@@ -61,24 +64,25 @@ export const StringReversal = () => {
           );
         })}
       </div>
-
+      {hasControls && (
+        <div className="mt-12 flex items-center justify-center gap-8">
+          <Button
+            className="flex justify-center items-center gap-4"
+            onClick={handleNext}
+          >
+            <span>Next</span>
+            <ChevronRight />
+          </Button>
+          <Button
+            onClick={handleRestart}
+            className="flex justify-center items-center gap-4 bg-primary text-white"
+          >
+            <span>Restart</span>
+            <RotateCcw width={18} height={18} />
+          </Button>
+        </div>
+      )}
       {/* controls */}
-      <div className="mt-12 flex items-center justify-center gap-8">
-        <Button
-          className="flex justify-center items-center gap-4"
-          onClick={handleNext}
-        >
-          <span>Next</span>
-          <ChevronRight />
-        </Button>
-        <Button
-          onClick={handleRestart}
-          className="flex justify-center items-center gap-4 bg-primary text-white"
-        >
-          <span>Restart</span>
-          <RotateCcw width={18} height={18} />
-        </Button>
-      </div>
     </div>
   );
 };

@@ -14,5 +14,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const ReverseString: Story = {
-  args: {},
+  args: {
+    inputString: "HELLO",
+    hasControls: false
+  },
+};
+
+
+export const ReverseStringControls: Story = {
+  args: {
+    inputString: "ALGORITHM",
+    hasControls: true
+  },
 };
